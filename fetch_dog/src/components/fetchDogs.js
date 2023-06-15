@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const BASE_URL = 'https://frontend-take-home-service.fetch.com';
 const DOGS_BREEDS_ENDPOINT = `${BASE_URL}/dogs/breeds`;
@@ -7,37 +7,14 @@ const DOGS_SEARCH_ENDPOINT = `${BASE_URL}/dogs/search`;
 const DOGS_MATCH_ENDPOINT = `${BASE_URL}/dogs/match`;
 const LOCATIONS_SEARCH_ENDPOINT = `${BASE_URL}/locations/search`;
 
-interface Dog {
-  id: string;
-  img: string;
-  name: string;
-  age: number;
-  zip_code: string;
-  breed: string;
-}
-
-interface Match {
-  match: string;
-}
-
-interface Location {
-  zip_code: string;
-  latitude: number;
-  longitude: number;
-  city: string;
-  state: string;
-  county: string;
-}
-
-
-const Search = ({ isAuthenticated, setIsAuthenticated }: { isAuthenticated: boolean, setIsAuthenticated: (isAuth: boolean) => void }) => {
+const Search = ({ isAuthenticated, setIsAuthenticated }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<Dog[]>([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [sortBy, setSortBy] = useState('asc');
-  const [favorites, setFavorites] = useState<Dog[]>([]);
-  const [match, setMatch] = useState<Dog | null>(null);
+  const [favorites, setFavorites] = useState([]);
+  const [match, setMatch] = useState(null);
 
-  const handleSearch = async (e: React.FormEvent) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     try {
       // Hit the search endpoint to find matching dogs
@@ -54,11 +31,11 @@ const Search = ({ isAuthenticated, setIsAuthenticated }: { isAuthenticated: bool
     }
   };
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSortChange = (e) => {
     setSortBy(e.target.value);
   };
 
-  const handleFavorite = (dog: Dog) => {
+  const handleFavorite = (dog) => {
     setFavorites((prevFavorites) => [...prevFavorites, dog]);
   };
 
@@ -68,7 +45,7 @@ const Search = ({ isAuthenticated, setIsAuthenticated }: { isAuthenticated: bool
       const response = await fetch(`${BASE_URL}/dogs/match`, { method: 'POST' });
 
       if (response.ok) {
-        const data: Match = await response.json();
+        const data = await response.json();
         // Fetch the dog details using the match ID
         const dogResponse = await fetch(`${BASE_URL}/dogs`, {
           method: 'POST',
@@ -77,7 +54,7 @@ const Search = ({ isAuthenticated, setIsAuthenticated }: { isAuthenticated: bool
         });
 
         if (dogResponse.ok) {
-          const dogData: Dog[] = await dogResponse.json();
+          const dogData = await dogResponse.json();
           setMatch(dogData[0]);
         }
       }

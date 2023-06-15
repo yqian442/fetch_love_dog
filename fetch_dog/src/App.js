@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import './App.css';
+
+import Login from './components/login';
+import Search from './components/fetchDogs';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,21 +14,21 @@ const App = () => {
         <nav>
           <ul>
             <li>
-              <Link to="./components/login">Login</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="./components/fetchDogs">Search</Link>
+              <Link to="/fetchDogs">Search</Link>
             </li>
           </ul>
         </nav>
         <Switch>
-          <Route path="./components/login">
+          <Route path="/login">
             <Login setIsAuthenticated={setIsAuthenticated} />
           </Route>
-          <Route path="./components/fetchDogs">
+          <Route path="/fetchDogs">
             <Search isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
           </Route>
-          <Redirect to="./components/login" />
+          <Redirect to="/login" />
         </Switch>
       </div>
     </Router>
@@ -33,3 +36,4 @@ const App = () => {
 };
 
 export default App;
+

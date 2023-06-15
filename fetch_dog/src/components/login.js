@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 const BASE_URL = 'https://frontend-take-home-service.fetch.com';
 
 const Login = ({ setIsAuthenticated }) => {
@@ -55,14 +56,3 @@ const Login = ({ setIsAuthenticated }) => {
 };
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-
