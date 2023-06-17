@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
 const BASE_URL = 'https://frontend-take-home-service.fetch.com';
-const DOGS_BREEDS_ENDPOINT = `${BASE_URL}/dogs/breeds`;
-const DOGS_SEARCH_ENDPOINT = `${BASE_URL}/dogs/search`;
-const DOGS_MATCH_ENDPOINT = `${BASE_URL}/dogs/match`;
-const LOCATIONS_SEARCH_ENDPOINT = `${BASE_URL}/locations/search`;
+
 
 const Search = ({ isAuthenticated, setIsAuthenticated }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [sortBy, setSortBy] = useState('asc');
-  const [favorites, setFavorites] = useState([]);
+  const [setFavorites] = useState([]);
   const [match, setMatch] = useState(null);
 
   const handleSearch = async (e) => {
