@@ -18,5 +18,8 @@
   "homepage": "https://github.com/yqian442/fetch_love_dog#readme",
   "devDependencies": {
     "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.0.0-alpha.2"
   }
 }

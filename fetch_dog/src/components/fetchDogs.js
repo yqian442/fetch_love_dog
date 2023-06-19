@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = 'https://frontend-take-home-service.fetch.com';
 
 
 const Search = ({ isAuthenticated, setIsAuthenticated }) => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+  const [searchBreeds, setSearchBreeds] = useState('');
+  const [searchZipCode, setSearchZipCode] = useState('');
+  const [searchAgeMin, setSearchAgeMin] = useState('');
+  const [searchAgeMax, setSearchAgeMax] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [sortBy, setSortBy] = useState('asc');
   const [setFavorites] = useState([]);
@@ -16,7 +20,7 @@ const Search = ({ isAuthenticated, setIsAuthenticated }) => {
     try {
       // Hit the search endpoint to find matching dogs
       const response = await fetch(
-        `${BASE_URL}/dogs/search?breeds=${searchQuery}&sort=${sortBy}&size=10`
+        `${BASE_URL}/dogs/search?breeds=${searchBreeds}&zipCode=${searchZipCode}&ageMin=${searchAgeMin}&ageMax=${searchAgeMax}&sort=${sortBy}&size=25`, { method: 'GET' }
       );
 
       if (response.ok) {
@@ -63,32 +67,53 @@ const Search = ({ isAuthenticated, setIsAuthenticated }) => {
   const handleLogout = async () => {
     try {
       // Hit the logout endpoint to end the user's session
-      const response = await fetch(`${BASE_URL}/logout`, { method: 'POST' });
-
-      if (response.ok) {
+      const response = await fetch(`${BASE_URL}/auth/logout`, { method: 'POST' });
+      console.log(response)
+      if (!response.ok) {
         setIsAuthenticated(false);
+        navigate("/");
       }
     } catch (error) {
       console.log('Error:', error);
     }
   };
 
-  if (!isAuthenticated) {
-    return <Redirect to="/login" />;
-  }
-
   return (
     <div>
       <h2>Search Page</h2>
-      <button onClick={handleLogout}>Logout</button>
-      <br />
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchBreeds}
+          onChange={(e) => setSearchBreeds(e.target.value)}
           placeholder="Enter dog breed"
+          size="35"
         />
+        <br />
+        <input
+          type="text"
+          value={searchZipCode}
+          onChange={(e) => setSearchZipCode(e.target.value)}
+          placeholder="Enter the zip code of searching area"
+          size="35"
+        />
+        <br />
+        <input
+          type="text"
+          value={searchAgeMin}
+          onChange={(e) => setSearchAgeMin(e.target.value)}
+          placeholder="Enter the minimum value of dog age"
+          size="35"
+        />
+        <br />
+        <input
+          type="text"
+          value={searchAgeMax}
+          onChange={(e) => setSearchAgeMax(e.target.value)}
+          placeholder="Enter maximum value of dog age"
+          size="35"
+        />
+        <br />
         <button type="submit">Search</button>
       </form>
       <br />
@@ -122,6 +147,8 @@ const Search = ({ isAuthenticated, setIsAuthenticated }) => {
           <p>Zip Code: {match.zip_code}</p>
         </div>
       )}
+      <br />
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };

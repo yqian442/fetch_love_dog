@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const BASE_URL = 'https://frontend-take-home-service.fetch.com';
 
 const Login = ({ setIsAuthenticated }) => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [redirectToSearch, setRedirectToSearch] = useState(false);
+  const [setRedirectToSearch] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,20 +22,19 @@ const Login = ({ setIsAuthenticated }) => {
       });
 
       if (response.ok) {
+        console.log(response)
         const accessToken = response.headers.get('fetch-access-token');
+        console.log(accessToken)
         if (accessToken) {
           setIsAuthenticated(true);
           setRedirectToSearch(true);
         }
+        navigate("/fetchDogs");
       }
     } catch (error) {
       console.log('Error:', error);
     }
   };
-
-  if (redirectToSearch) {
-    return <Redirect to="/fetchDogs" />;
-  }
 
   return (
     <div>
