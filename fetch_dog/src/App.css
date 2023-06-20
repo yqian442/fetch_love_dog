@@ -14,7 +14,7 @@ body {
 }
 
 .main {
-  background:rgba(255, 255, 255, 0.8);
+  background:rgba(248, 247, 248, 0.8);
   padding: 3rem;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
@@ -30,7 +30,7 @@ body {
 
 h1{
   font-size: 5rem;
-  color: #004dff;
+  color: #ce34f4;
   text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
 }
 
@@ -39,67 +39,35 @@ p{
 }
 
 button {
-  width: 20rem;
-  padding: 10px;
+  width: 12rem;
+  padding: 5px;
 }
 
 h2{
   margin-top: 3rem;
 }
+.header {
+  padding: 60px;
+  width: 450px;
+  height: 100px;
+  left: 0px;
+  top: -20px;
+  text-align: center;
+  background-image: url("./header-logo.png");
+  color: #ce34f4;
+  background-size: 150px;
 
-.button-92 {
---c: #fff;
-/* text color */
-background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
-  #004dff;
-/* background color */
-color: #0000;
-border: none;
-transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
-text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
-  calc(var(--_i,-1)*-0.08em)  .01em 2px #0004;
-outline-offset: .1em;
-transition: 0.3s;
-}
-
-.button-92:hover,
-.button-92:focus-visible {
---_p: 0%;
---_i: 1;
-}
-
-.button-92:active {
-text-shadow: none;
-color: var(--c);
-box-shadow: inset 0 0 9e9q #0005;
-transition: 0s;
-}
-
-.button-92 {
-font-weight: bold;
-font-size: 2rem;
-margin: 0;
-cursor: pointer;
-padding: .1em .3em;
 }
 .footer {
-  position: fixed;
+  position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
-  background-color: blueviolet;
+  width: 200px;
+  height: 100px;
+  background-image: url(./footer_logo.png);
+  background-size: 200px;
   color: white;
   text-align: center;
-}
-.imginthefoot{
-  background: url(./footer-logo.png);
-  width:100px;
-  height:300px;
-  z-index:300;
-  bottom: 0px;
-  top: -108px;
-  right: -150px;
-  position: relative;
 }
 
 @media all and (max-width: 850px){
@@ -121,18 +89,10 @@ padding: .1em .3em;
   h2{
       font-size: 1.2rem;
   }
-  .button-92 {
-      font-size: 1.8rem;
-      padding: .1em .2em;
-    }
   .footer{
     width: 100%;
   }
-  .imginthefoot{
-    width:100px;
-    height:300px;
-    z-index:300;
-  }
+
 
 }
 
@@ -154,22 +114,10 @@ padding: .1em .3em;
       font-size: 1rem;
   }
   button {
-      width: 10rem;
-      padding: 10px;
-  }
-  .button-92 {
-      font-size: 1.2rem;
-      padding: .1em;
-    }
-  .button-92 {
-    transform: perspective(200px) rotateY(calc(20deg*var(--_i,-1)));
+      width: 12rem;
+      padding: 5px;
   }
   .footer{
     width: 100%;
-  }
-  .imginthefoot{
-    width:100px;
-    height:300px;
-    z-index:300;
   }
 }

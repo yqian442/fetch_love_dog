@@ -9,13 +9,21 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
-    <Router>
+    <div>
+      <div className="header">
+        <h1>Search My Dog</h1>
+      </div>
+      <Router>
         <Routes>
           <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated}/>}/>
           <Route path="/fetchDogs" element={<Search isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
           <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated}/>}/>
         </Routes>
-    </Router>
+      </Router>
+      <div className="footer">
+      </div>
+    </div>
+    
   );
 };
 
