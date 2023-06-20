@@ -1,38 +1,175 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("./godgod.jpg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  background:rgba(255, 255, 255, 0.8);
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  margin-top: 5rem;
+  text-align: center;
+  width: 800px;
+}
+
+.main:hover{
+  transform: scale(1.2);
+  transition: all 0.5s linear;
+}
+
+h1{
+  font-size: 5rem;
+  color: #004dff;
+  text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
+}
+
+p{
+  margin: 1rem 0 3rem 0;
+}
+
+button {
+  width: 20rem;
+  padding: 10px;
+}
+
+h2{
+  margin-top: 3rem;
+}
+
+.button-92 {
+--c: #fff;
+/* text color */
+background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
+  #004dff;
+/* background color */
+color: #0000;
+border: none;
+transform: perspective(500px) rotateY(calc(20deg*var(--_i,-1)));
+text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
+  calc(var(--_i,-1)*-0.08em)  .01em 2px #0004;
+outline-offset: .1em;
+transition: 0.3s;
+}
+
+.button-92:hover,
+.button-92:focus-visible {
+--_p: 0%;
+--_i: 1;
+}
+
+.button-92:active {
+text-shadow: none;
+color: var(--c);
+box-shadow: inset 0 0 9e9q #0005;
+transition: 0s;
+}
+
+.button-92 {
+font-weight: bold;
+font-size: 2rem;
+margin: 0;
+cursor: pointer;
+padding: .1em .3em;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: blueviolet;
+  color: white;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.imginthefoot{
+  background: url(./footer-logo.png);
+  width:100px;
+  height:300px;
+  z-index:300;
+  bottom: 0px;
+  top: -108px;
+  right: -150px;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media all and (max-width: 850px){
+  body {
+  width: auto;
+}
+  .main {
+      width: 450px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .main:hover{
+      transform: scale(1.1);
   }
-  to {
-    transform: rotate(360deg);
+  p{
+      font-size: 0.9rem;
+  }
+  h1{
+      font-size: 2.7rem;
+  }
+  h2{
+      font-size: 1.2rem;
+  }
+  .button-92 {
+      font-size: 1.8rem;
+      padding: .1em .2em;
+    }
+  .footer{
+    width: 100%;
+  }
+  .imginthefoot{
+    width:100px;
+    height:300px;
+    z-index:300;
+  }
+
+}
+
+
+@media all and (max-width: 500px){
+  .main {
+      width: 350px;
+  }
+  .main:hover{
+      transform: scale(1);
+  }
+  p{
+      font-size: 0.7rem;
+  }
+  h1{
+      font-size: 1.7rem;
+  }
+  h2{
+      font-size: 1rem;
+  }
+  button {
+      width: 10rem;
+      padding: 10px;
+  }
+  .button-92 {
+      font-size: 1.2rem;
+      padding: .1em;
+    }
+  .button-92 {
+    transform: perspective(200px) rotateY(calc(20deg*var(--_i,-1)));
+  }
+  .footer{
+    width: 100%;
+  }
+  .imginthefoot{
+    width:100px;
+    height:300px;
+    z-index:300;
   }
 }
